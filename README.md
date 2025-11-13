@@ -29,28 +29,29 @@ A high-performance SQL query plan caching system with **105x speedup** using ANT
 
 ## Project Structure
 
-├── pom.xml                          # Maven configuration
-├── Design Document.md               # Architecture and design decisions
-├── TEST_PLAN.md                     # Comprehensive test documentation
-├── src/
-│   ├── main/
-│   │   ├── antlr4/
-│   │   │   └── SQL.g4              # ANTLR SQL grammar
-│   │   └── java/
-│   │       ├── QueryPlanCacheManager.java    # Main cache manager
-│   │       ├── QueryNormalizer.java          # ANTLR-based normalizer
-│   │       ├── NormalizationVisitor.java     # AST visitor
-│   │       ├── CachedPlan.java               # Cache entry
-│   │       ├── CacheStatistics.java          # Metrics tracking
-│   │       ├── SchemaVersionTracker.java     # Schema invalidation
-│   │       ├── ExecutionPlan.java            # Plan representation
-│   │       ├── NormalizedQuery.java          # Normalized query result
-│   │       ├── ParameterMetadata.java        # Parameter info
-│   │       ├── ParameterType.java            # Parameter types
-│   │       └── UsageExample.java             # Demo application
-│   └── test/
-│       └── java/
-│           └── QueryPlanCacheTest.java       # 32 comprehensive tests
+**Core Files:**
+- `pom.xml` - Maven configuration
+- `Design Document.md` - Architecture and design decisions
+- `TEST_PLAN.md` - Comprehensive test documentation
+
+**Source Code (`src/main/java/`):**
+- `QueryPlanCacheManager.java` - Main two-tier cache manager
+- `QueryNormalizer.java` - ANTLR-based SQL normalizer
+- `NormalizationVisitor.java` - AST visitor for parameter extraction
+- `CachedPlan.java` - Cache entry with metadata
+- `CacheStatistics.java` - Hit/miss metrics tracking
+- `SchemaVersionTracker.java` - Schema version invalidation
+- `ExecutionPlan.java` - Execution plan representation
+- `NormalizedQuery.java` - Normalized query result
+- `ParameterMetadata.java` - Parameter type information
+- `ParameterType.java` - Parameter type enum
+- `UsageExample.java` - Demo application
+
+**Grammar (`src/main/antlr4/`):**
+- `SQL.g4` - ANTLR SQL grammar (SELECT, INSERT, UPDATE, DELETE, MERGE, CTE)
+
+**Tests (`src/test/java/`):**
+- `QueryPlanCacheTest.java` - 32 comprehensive tests (31 passing)
 
 ### Prerequisites
 - Java 11 or higher
