@@ -57,8 +57,8 @@ A high-performance SQL query plan caching system with **105x speedup** using ANT
 - Maven 3.9 or higher
 
 ### Build
-mvn clean compile### Run Tests
-mvn test### Run Example
+mvn clean compile ### Run Tests
+mvn test ### Run Example
 mvn exec:java -Dexec.mainClass="UsageExample"
 
 mvn exec:java -Dexec.mainClass="UsageExample"he Architecture
@@ -100,7 +100,7 @@ mvn exec:java -Dexec.mainClass="UsageExample"he Architecture
 
 This project was developed as a technical assessment for TigerGraph.
 
-## 👤 Author
+## Author
 
 Vishal Chatterjee
 

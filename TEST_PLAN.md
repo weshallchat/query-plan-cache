@@ -19,6 +19,7 @@ This document outlines the comprehensive testing strategy for the Query Plan Cac
 ### 1.1 Testing Objectives
 
 | Objective | Description | Status |
+|-----------|-------------|--------|
 | **Functional Correctness** | Verify query normalization and plan reuse logic | PASS |
 | **Performance Validation** | Measure cache hit/miss latency and throughput | PASS |
 | **Concurrency Safety** | Validate thread-safe operations under load | PASS |
@@ -43,7 +44,7 @@ mvn clean test
 ### 2.1 Test Categories
 
 | Category | Test Count | Status | Coverage Area |
-|----------|-----------|--------|---------------|
+|----------|------------|--------|---------------|
 | **Normalization Tests** | 6 | 6/6 PASS | Query pattern normalization |
 | **Cache Hit/Miss Tests** | 4 | 4/4 PASS | Basic cache operations |
 | **Concurrency Tests** | 3 | 3/3 PASS | Thread safety & race conditions |
@@ -58,6 +59,7 @@ mvn clean test
 ### 2.2 Code Coverage by Component
 
 | Component | Lines Covered | Branch Coverage | Description |
+|-----------|---------------|-----------------|-------------|
 | `QueryPlanCacheManager` | ~95% | ~90% | Two-tier cache logic, eviction, invalidation |
 | `QueryNormalizer` | ~100% | ~95% | ANTLR parsing, error handling |
 | `NormalizationVisitor` | ~98% | ~92% | AST traversal, parameter extraction |
@@ -166,7 +168,7 @@ mvn clean test
 
 **Purpose:** Measure and validate performance improvements
 
-#### Test 3.4.1: `testCacheLookupSpeed` ⚡
+#### Test 3.4.1: `testCacheLookupSpeed`
 - **Benchmark Methodology:**
   - Warm-up: 100 iterations
   - Measurement: 1000 iterations each for miss and hit
@@ -177,6 +179,7 @@ mvn clean test
   Cache Hit:     667 ns
   Speedup:     105.8
   | Operation | Time (ns) | % of Total |
+  |-----------|-----------|------------|
   | ANTLR Parse | 25,000 | 35% |
   | AST Normalization | 15,000 | 21% |
   | SHA-256 Hash | 5,000 | 7% |
@@ -186,6 +189,7 @@ mvn clean test
 
 - **Cache Hit Fast Path:**
   | Operation | Time (ns) | % of Total |
+  |-----------|-----------|------------|
   | Query Hash | 500 | 75% |
   | Cache Lookup | 167 | 25% |
 
@@ -329,17 +333,20 @@ mvn clean test
 ### 4.1 Latency Comparison
 
 | Metric | Cache Miss | Tier 2 Hit | Tier 1 Hit | Improvement |
+|--------|------------|------------|------------|-------------|
 | **Avg Latency** | 70.5 µs | 30.0 µs | 0.67 µs | 2.3x / 105x |
 
 ### 4.2 Throughput Benchmarks
 
 | Workload | Without Cache | With Cache | Improvement |
+|----------|---------------|------------|-------------|
 | **100% Unique Queries** | 14,200 q/s | 14,200 q/s | 1.0x (baseline) |
 | **50% Cache Hit Rate** | 14,200 q/s | 26,300 q/s | 1.9x |
 
 ### 4.3 Memory Usage
 
 | Cache Size | Tier 1 Memory | Tier 2 Memory | Total Memory |
+|------------|---------------|---------------|--------------|
 | 1,000 entries | 100 KB | 5 MB | 5.1 MB |
 
 **Memory Efficiency:** ~5 KB per cached plan
@@ -387,10 +394,11 @@ mvn clean test
 ## 6. Test Execution Timeline
 
 | Test Category | Duration |
+|---------------|----------|
 | CacheHitMissTests | 100 ms |
-| ConcurrencyTests | 95 ms |
-| CorrectnessTests | 4 ms |
-| EdgeCaseTests | 19 ms |
+| ConcurrencyTests | 95 ms 
+| CorrectnessTests | 4 ms 
+| EdgeCaseTests | 19 ms 
 | IntegrationTests | 6 ms |
 | NormalizationTests | 4 ms |
 | PerformanceTests | 8 ms |

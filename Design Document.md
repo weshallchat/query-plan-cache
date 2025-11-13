@@ -102,7 +102,6 @@ My implementations uses a two-tier caching strategy for optimal performance:
 
 #### 2.2.3: Cache Lookup Logic (Two Tier):
 
-```
 1. Receive SQL query
 2. Fast Path: Check queryToKeyCache (Tier 1)
   - If hit: Direct lookup in planCache, validate, bind parameters
@@ -118,7 +117,6 @@ My implementations uses a two-tier caching strategy for optimal performance:
   - Store in planCache with metadata
   - Record dependencies for invalidation
 5. Return execution plan with bound parameters
-```
 
 #### 2.2.4: Query Plan Reuse Logic
 
@@ -318,7 +316,7 @@ Solution: Double-checked locking pattern
 
 Active Detection:
 - Hook into DDL execution path
-- Intercept ALTER?DROP?CREATE statements
+- Intercept ALTER/DROP/CREATE statements
 - Trigger invalidation before DDL completes
 
 Passive Detection:
