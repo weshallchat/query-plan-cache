@@ -405,6 +405,8 @@ mvn clean test
 | SchemaInvalidationTests | 6 ms |
 | StatementTypeTests | 4 ms |
 
+---
+
 ## 7. Known Limitations
 
 **Status**: FAIL (expected behaviour)

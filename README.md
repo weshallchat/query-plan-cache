@@ -57,11 +57,13 @@ A high-performance SQL query plan caching system with **105x speedup** using ANT
 - Maven 3.9 or higher
 
 ### Build
-mvn clean compile ### Run Tests
-mvn test ### Run Example
+mvn clean compile 
+### Run Tests 
+mvn test 
+### Run Example
 mvn exec:java -Dexec.mainClass="UsageExample"
 
-mvn exec:java -Dexec.mainClass="UsageExample"he Architecture
+### Architecture
 - **Tier 1**: Exact query string → cache key mapping (bypasses parsing)
 - **Tier 2**: Normalized pattern → execution plan mapping
 - **Result**: 105x speedup for repeated identical queries
